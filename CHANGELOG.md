@@ -4,6 +4,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This file uses change log convention from [Keep a CHANGELOG](http://keepachangelog.com).
 
 ## [Unreleased][unreleased]
+### Added
+- .editorconfig
+- .gitignore
+
 ### Fixed
 - Usage command to work properly
 
