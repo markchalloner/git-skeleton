@@ -17,7 +17,8 @@ The following command:
 echo -n "Installation directory (use . for current): " && read TARGET && \
 echo -n "Git Skeleton URL: " && read ORIGIN && \
 git clone "${ORIGIN}" "${TARGET}" && \
-rsync -a --delete --exclude="src" "${TARGET}/src" "${TARGET}/" && \
+rsync -a --delete --filter='P src' "${TARGET}/src/" "${TARGET}" && \
+rm -rf "${TARGET}/src" && \
 echo "Done. Have a nice day"
 
 ```
