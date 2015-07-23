@@ -12,6 +12,7 @@ The following command:
 - Asks for a skeleton origin URL
 - Clones the origin
 - Overwrites installation directory with src/ directory
+- Initialises an empty Git repository in the installation directory
 
 ``` bash
 (echo -n "Installation directory (use . for current): " && read TARGET && \
