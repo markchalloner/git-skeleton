@@ -18,8 +18,8 @@ The following command:
 echo -n "Git Skeleton URL: " && read ORIGIN && \
 git clone "${ORIGIN}" "${TARGET}" && \
 find "${TARGET}" ! \( -name 'src' -o -name '.' -o -name '..' \) -mindepth 1 -maxdepth 1 -exec rm -rf {} \; && \
-mv "${TARGET}/src/"* "${TARGET}" && \
-rm -rf "${TARGET}/src" && \
+mv "${TARGET}/src/"* "${TARGET}" && rm -rf "${TARGET}/src" && \
+cd "${TARGET}" && git init && \
 echo "Done. Have a nice day")
 
 ```
