@@ -12,14 +12,16 @@ The following command:
 - Asks for a skeleton origin URL
 - Clones the origin
 - Overwrites installation directory with src/ directory
+- Initialises an empty Git repository in the installation directory
 
 ``` bash
-echo -n "Installation directory (use . for current): " && read TARGET && \
+(echo -n "Installation directory (use . for current): " && read TARGET && \
 echo -n "Git Skeleton URL: " && read ORIGIN && \
 git clone "${ORIGIN}" "${TARGET}" && \
-rsync -a --delete --filter='P src' "${TARGET}/src/" "${TARGET}" && \
-rm -rf "${TARGET}/src" && \
-echo "Done. Have a nice day"
+find "${TARGET}" ! \( -name 'src' -o -name '.' -o -name '..' \) -mindepth 1 -maxdepth 1 -exec rm -rf {} \; && \
+mv "${TARGET}/src/"* "${TARGET}" && rm -rf "${TARGET}/src" && \
+cd "${TARGET}" && git init && \
+echo "Done. Have a nice day")
 
 ```
 
