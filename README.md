@@ -15,11 +15,11 @@ The following command:
 - Initialises an empty Git repository in the installation directory
 
 ``` bash
-(echo -n "Installation directory (use . for current): " && read TARGET && \
-echo -n "Git Skeleton URL: " && read ORIGIN && \
+(ORIGIN="https://github.com/markchalloner/git-skeleton" && \
+echo -n "Installation directory (use . for current): " && read TARGET && \
 git clone "${ORIGIN}" "${TARGET}" && \
-find "${TARGET}" ! \( -name 'src' -o -name '.' -o -name '..' \) -mindepth 1 -maxdepth 1 -exec rm -rf {} \; && \
-mv "${TARGET}/src/"* "${TARGET}" && rm -rf "${TARGET}/src" && \
+find "${TARGET}" -mindepth 1 -maxdepth 1 ! \( -name 'src' -o -name '.' -o -name '..' \) -exec rm -rf {} \; && \
+shopt -s dotglob && mv "${TARGET}/src/"* "${TARGET}" && rm -rf "${TARGET}/src" && \
 cd "${TARGET}" && git init && \
 echo "Done. Have a nice day")
 
